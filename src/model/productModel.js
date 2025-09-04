@@ -1,7 +1,7 @@
 let produtos = [
     {
         id: 1,
-        nome: "Camiseta Básica",
+        nome: "Camiseta",
         descricao: "Camiseta de algodão unissex, tamanho M, cor preta",
         preco: 29.90,
         categoria: "Roupas",
@@ -10,7 +10,7 @@ let produtos = [
     },
     {
         id: 2,
-        nome: "Fone de Ouvido Bluetooth",
+        nome: "Fone",
         descricao: "Fone sem fio com cancelamento de ruído, 20 horas de bateria",
         preco: 149.90,
         categoria: "Eletrônicos",

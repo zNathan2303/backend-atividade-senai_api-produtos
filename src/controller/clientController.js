@@ -18,7 +18,7 @@ const getClientById = (req, res) => {
 }
 
 const getClientByName = (req, res) => {
-    const nome = parseInt(req.params.nome)
+    const nome = String(req.params.nome)
 
     const cliente = clientModel.findByName(nome)
 
@@ -32,7 +32,7 @@ const getClientByName = (req, res) => {
 const createClient = (req, res) => {
     const { nome, email, telefone, endereco, dataCadastro, ativo } = req.body
 
-    if (!nome || !email || !telefone || !endereco || !dataCadastro || !ativo) {
+    if (!nome || !email || !telefone || !endereco || !dataCadastro || typeof ativo != 'boolean') {
         return res.status(400).json({ mensagem: 'Nome, email, telefone, endereço, data de cadastro, e estado de atividade são obrigatórios' })
     } else {
         const cliente = clientModel.createClient({ nome, email, telefone, endereco, dataCadastro, ativo })
@@ -45,7 +45,7 @@ const updateClient = (req, res) => {
 
     const { nome, email, telefone, endereco, dataCadastro, ativo } = req.body
 
-    if (!nome && !email && !telefone && !endereco && !dataCadastro && !ativo) {
+    if (!nome && !email && !telefone && !endereco && !dataCadastro && typeof ativo != 'boolean') {
         return res.status(400).json({ mensagem: 'É necessário informar algum valor que será alterado!' })
     } else {
         clientModel.updateClient(id, { nome, email, telefone, endereco, dataCadastro, ativo })

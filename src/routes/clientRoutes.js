@@ -6,9 +6,9 @@ const clientController = require('../controller/clientController.js')
 
 router.get('/', clientController.getAllClients)
 
-router.get('/:id', clientController.getClientById)
+router.get('/id/:id', clientController.getClientById)
 
-router.get('/:nome', clientController.getClientByName)
+router.get('/nome/:nome', clientController.getClientByName)
 
 router.post('/', clientController.createClient)
 
