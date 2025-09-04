@@ -6,9 +6,9 @@ const productController = require('../controller/productController.js')
 
 router.get('/', productController.getAllProducts)
 
-router.get('/:id', productController.getProductById)
+router.get('/id/:id', productController.getProductById)
 
-router.get('/:nome', productController.getProductByName)
+router.get('/nome/:nome', productController.getProductByName)
 
 router.post('/', productController.createProduct)
 
