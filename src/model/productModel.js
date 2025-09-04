@@ -19,7 +19,7 @@ let produtos = [
     },
     {
         id: 3,
-        nome: "Caneca de Cerâmica",
+        nome: "Caneca",
         descricao: "Caneca personalizada de 300ml, tema geek",
         preco: 19.90,
         categoria: "Utensílios",
@@ -48,12 +48,13 @@ const createProduct = (produto) => {
 
 const updateProduct = (id, produto) => {
     const index = produtos.findIndex(produto => produto.id === id)
-    produtos[index].nome = produto.nome
-    produtos[index].descricao = produto.descricao
-    produtos[index].preco = produto.preco
-    produtos[index].categoria = produto.categoria
-    produtos[index].estoque = produto.estoque
-    produtos[index].ativo = produto.ativo
+
+    if (produto.nome) produtos[index].nome = produto.nome
+    if (produto.descricao) produtos[index].descricao = produto.descricao
+    if (produto.preco) produtos[index].preco = parseFloat(produto.preco)
+    if (produto.categoria) produtos[index].categoria = produto.categoria
+    if (produto.estoque) produtos[index].estoque = parseInt(produto.estoque)
+    if (produto.ativo != null) produtos[index].ativo = produto.ativo
 }
 
 const deleteProduct = (id) => {

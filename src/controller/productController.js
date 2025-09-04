@@ -18,7 +18,7 @@ const getProductById = (req, res) => {
 }
 
 const getProductByName = (req, res) => {
-    const nome = parseInt(req.params.nome)
+    const nome = req.params.nome
 
     const produto = productModel.findByName(nome)
 
@@ -45,7 +45,7 @@ const updateProduct = (req, res) => {
 
     const { nome, descricao, preco, categoria, estoque, ativo } = req.body
 
-    if (!nome || !descricao || !preco || !categoria || !estoque || !ativo) {
+    if (!nome && !descricao && isNaN(preco) && !categoria && isNaN(estoque) && ativo == null) {
         return res.status(400).json({ mensagem: 'É necessário informar algum valor que será alterado!' })
     } else {
         productModel.updateProduct(id, { nome, descricao, preco, categoria, estoque, ativo })
