@@ -36,14 +36,22 @@ const findById = (id) => {
     return produtos.find(produto => produto.id === id)
 }
 
-const findByName = (name) => {
-    return produtos.find(produto => produto.nome === name)
+const findByName = (nome) => {
+    return produtos.find(produto => produto.nome === nome)
 }
 
 const createProduct = (produto) => {
     const id = produtos.length > 0 ? produtos[produtos.length - 1].id + 1 : 1
-    const produtoComId = { id: id, ...produto }
-    clientes.push(produtoComId)
+    const produtoComId = {
+        id: id,
+        nome: produto.nome,
+        descricao: produto.descricao,
+        preco: parseFloat(produto.preco),
+        categoria: produto.categoria,
+        estoque: parseInt(produto.estoque),
+        ativo: produto.ativo
+    }
+    produtos.push(produtoComId)
 }
 
 const updateProduct = (id, produto) => {

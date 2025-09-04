@@ -32,7 +32,7 @@ const getProductByName = (req, res) => {
 const createProduct = (req, res) => {
     const { nome, descricao, preco, categoria, estoque, ativo } = req.body
 
-    if (!nome || !descricao || !preco || !categoria || !estoque || !ativo) {
+    if (!nome || !descricao || isNaN(preco) || !categoria || isNaN(estoque) || ativo == null) {
         return res.status(400).json({ mensagem: 'Nome, descrição, preco, categoria, estoque, e estado de disponibilidade são obrigatórios' })
     } else {
         const produto = productModel.createProduct({ nome, descricao, preco, categoria, estoque, ativo })
