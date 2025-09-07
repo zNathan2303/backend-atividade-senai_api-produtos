@@ -4,11 +4,9 @@ const router = express.Router()
 
 const productController = require('../controller/productController.js')
 
-router.get('/', productController.getAllProducts)
+router.get('/', productController.getProduct)
 
-router.get('/id/:id', productController.getProductById)
-
-router.get('/nome/:nome', productController.getProductByName)
+router.get('/:id', productController.getProductById)
 
 router.post('/', productController.createProduct)
 

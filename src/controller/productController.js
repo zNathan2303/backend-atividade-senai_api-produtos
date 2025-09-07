@@ -1,5 +1,14 @@
 const productModel = require('../model/productModel.js')
 
+const getProduct = (req, res) => {
+    const { nome } = req.query
+    if (nome) {
+        getProductByName(req, res)
+    } else {
+        getAllProducts(req, res)
+    }
+}
+
 const getAllProducts = (req, res) => {
     const produtos = productModel.findALl()
     res.status(200).json(produtos)
@@ -18,8 +27,7 @@ const getProductById = (req, res) => {
 }
 
 const getProductByName = (req, res) => {
-    const nome = String(req.params.nome)
-
+    const { nome } = req.query
     const produto = productModel.findByName(nome)
 
     if (produto) {
@@ -60,6 +68,7 @@ const deleteProduct = (req, res) => {
 }
 
 module.exports = {
+    getProduct,
     getAllProducts,
     getProductById,
     getProductByName,

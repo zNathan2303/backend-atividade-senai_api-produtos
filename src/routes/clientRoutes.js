@@ -4,11 +4,9 @@ const router = express.Router()
 
 const clientController = require('../controller/clientController.js')
 
-router.get('/', clientController.getAllClients)
+router.get('/', clientController.getClient)
 
-router.get('/id/:id', clientController.getClientById)
-
-router.get('/nome/:nome', clientController.getClientByName)
+router.get('/:id', clientController.getClientById)
 
 router.post('/', clientController.createClient)
 

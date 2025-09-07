@@ -37,7 +37,7 @@ const findById = (id) => {
 }
 
 const findByName = (nome) => {
-    return produtos.find(produto => produto.nome === nome)
+    return produtos.find(produto => produto.nome.toLowerCase() === nome.toLowerCase())
 }
 
 const createProduct = (produto) => {

@@ -1,5 +1,14 @@
 const clientModel = require('../model/clientModel.js')
 
+const getClient = (req, res) => {
+    const { nome } = req.query
+    if (nome) {
+        getClientByName(req, res)
+    } else {
+        getAllClients(req, res)
+    }
+}
+
 const getAllClients = (req, res) => {
     const clientes = clientModel.findALl()
     res.status(200).json(clientes)
@@ -18,7 +27,7 @@ const getClientById = (req, res) => {
 }
 
 const getClientByName = (req, res) => {
-    const nome = String(req.params.nome)
+    const { nome } = req.query
 
     const cliente = clientModel.findByName(nome)
 
@@ -61,6 +70,7 @@ const deleteClient = (req, res) => {
 }
 
 module.exports = {
+    getClient,
     getAllClients,
     getClientById,
     getClientByName,

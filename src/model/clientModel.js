@@ -37,7 +37,7 @@ const findById = (id) => {
 }
 
 const findByName = (nome) => {
-    return clientes.find(cliente => cliente.nome === nome)
+    return clientes.find(cliente => cliente.nome.toLowerCase() === nome.toLowerCase())
 }
 
 const createClient = (cliente) => {
